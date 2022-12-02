@@ -40,6 +40,8 @@ app.use("/api/v1", other);
 
 export default app;
 
+app.get("/", (req, res) => res.send("<h1>Server is working</h1>"));
+
 // error middleware this should be last
 // as it will be called after all middleware
 // are used and when there's an error
