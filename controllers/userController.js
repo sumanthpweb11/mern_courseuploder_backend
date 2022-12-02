@@ -74,7 +74,7 @@ export const logout = catchAsyncError(async (req, res, next) => {
   // };
 
   const options = {
-    expires: new Date(Date.now() + 15 * 24 * 60 * 60 * 1000),
+    expires: new Date(Date.now()),
     httpOnly: true,
     secure: true,
     sameSite: "none",
