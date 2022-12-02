@@ -338,7 +338,7 @@ User.watch().on("change", async () => {
 
   const subscription = await User.find({ "subscription.status": "active" });
 
-  stats[0].users = User.countDocuments();
+  stats[0].users = await User.countDocuments();
   stats[0].subscription = subscription.length;
   stats[0].createdAt = new Date(Date.now());
 
