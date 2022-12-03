@@ -40,7 +40,11 @@ app.use("/api/v1", other);
 
 export default app;
 
-app.get("/", (req, res) => res.send("<h1>Server is working</h1>"));
+app.get("/", (req, res) =>
+  res.send(
+    `<h1>Server is working click <a href=${process.env.FRONTEND_URL}>here</a></h1>`
+  )
+);
 
 // error middleware this should be last
 // as it will be called after all middleware
