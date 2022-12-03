@@ -71,7 +71,7 @@ export const logout = catchAsyncError(async (req, res, next) => {
     .cookie("token", null, {
       expires: new Date(Date.now()),
       httpOnly: true,
-      // secure: true,
+      secure: true,
       sameSite: "none",
     })
     .json({
@@ -333,14 +333,14 @@ export const deleteUser = catchAsyncError(async (req, res, next) => {
 // watcher to check users registered
 // inbuilt node function
 
-// User.watch().on("change", async () => {
-//   const stats = await Stats.find({}).sort({ createdAt: "desc" }).limit(1);
+User.watch().on("change", async () => {
+  const stats = await Stats.find({}).sort({ createdAt: "desc" }).limit(1);
 
-//   const subscription = await User.find({ "subscription.status": "active" });
+  const subscription = await User.find({ "subscription.status": "active" });
 
-//   stats[0].users = await User.countDocuments();
-//   stats[0].subscription = subscription.length;
-//   stats[0].createdAt = new Date(Date.now());
+  stats[0].users = await User.countDocuments();
+  stats[0].subscription = subscription.length;
+  stats[0].createdAt = new Date(Date.now());
 
-//   await stats[0].save();
-// });
+  await stats[0].save();
+});
